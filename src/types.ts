@@ -1,6 +1,7 @@
 export type Screen =
   | 'home' | 'shoot' | 'count' | 'trace' | 'spell'
   | 'match' | 'sounds' | 'song' | 'draw' | 'pop' | 'grown'
+  | 'airhockey'
 
 export interface Settings {
   childName: string

@@ -16,6 +16,7 @@ import { SongScreen } from './screens/SongScreen'
 import { DrawScreen } from './screens/DrawScreen'
 import { PopScreen } from './screens/PopScreen'
 import { GrownUpsScreen } from './screens/GrownUpsScreen'
+import { AirHockeyScreen } from './screens/AirHockeyScreen'
 
 export default function App() {
   const { settings, updateSettings } = useSettings()
@@ -75,6 +76,10 @@ export default function App() {
         {screen === 'pop'    && <PopScreen settings={settings} onCelebrate={celebrate} />}
         {screen === 'grown'  && <GrownUpsScreen settings={settings} onUpdate={updateSettings} />}
       </div>
+
+      {screen === 'airhockey' && (
+        <AirHockeyScreen soundOn={settings.soundOn} onGoHome={() => navigate('home')} />
+      )}
 
       <CelebrationOverlay
         visible={celebration.visible}

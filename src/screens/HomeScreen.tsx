@@ -131,7 +131,7 @@ export function HomeScreen({ settings, stars, onNavigate }: Props) {
         <div style={{ fontFamily: "'Fredoka'", fontWeight: 700, fontSize: 30, margin: '2px 4px 14px' }}>
           Pick a game, <span style={{ color: team }}>#{settings.jerseyNumber}</span>
         </div>
-        <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gridTemplateRows: 'repeat(3,1fr)', gap: 16 }}>
+        <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gridTemplateRows: 'repeat(3,1fr)', gap: 16 }}>
 
           <Tile tag="PLAY" title="Shoot the Puck" subtitle="Score a big goal!" onClick={() => onNavigate('shoot')}
             icon={<div style={{ width: 34, height: 24, background: '#14171C', borderRadius: '50%', boxShadow: 'inset 0 -3px 0 rgba(255,255,255,.12)' }} />}
@@ -169,6 +169,42 @@ export function HomeScreen({ settings, stars, onNavigate }: Props) {
               <div style={{ position: 'absolute', left: 10, bottom: 0, width: 16, height: 12, background: '#F5A300', borderRadius: '50%' }} />
             </div>}
           />
+
+          {/* Air Hockey — featured tile spanning 3 columns */}
+          <button
+            onClick={() => onNavigate('airhockey')}
+            onPointerDown={e => { const el = e.currentTarget; el.style.transform = 'translateY(3px)'; el.style.boxShadow = '0 5px 0 rgba(11,42,91,.10)' }}
+            onPointerUp={e => { const el = e.currentTarget; el.style.transform = ''; el.style.boxShadow = '0 8px 0 rgba(11,42,91,.10)' }}
+            onPointerLeave={e => { const el = e.currentTarget; el.style.transform = ''; el.style.boxShadow = '0 8px 0 rgba(11,42,91,.10)' }}
+            style={{
+              gridColumn: 'span 3', cursor: 'pointer', border: 'none', borderRadius: 22,
+              background: 'linear-gradient(135deg,#0c1b2e 0%,#0e2038 60%,#0a1822 100%)',
+              boxShadow: '0 8px 0 rgba(11,42,91,.10)', padding: '16px 24px',
+              display: 'flex', alignItems: 'center', gap: 20,
+              position: 'relative', touchAction: 'manipulation',
+              transition: 'transform .08s, box-shadow .08s', overflow: 'hidden',
+            }}
+          >
+            {/* Ice rink mini graphic */}
+            <div style={{ width: 80, height: 56, borderRadius: 12, background: 'linear-gradient(180deg,#edf4fb,#d6eaf8)', border: '3px solid #e7ecf2', position: 'relative', flexShrink: 0, overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', left: 0, right: 0, top: '50%', height: 2, background: '#d2122c', transform: 'translateY(-50%)' }} />
+              <div style={{ position: 'absolute', left: '50%', top: '50%', width: 18, height: 18, borderRadius: '50%', border: '2px solid #1f5fd0', transform: 'translate(-50%,-50%)' }} />
+              <div style={{ position: 'absolute', left: '50%', top: 6, width: 22, height: 6, borderRadius: '0 0 4px 4px', background: '#d2122c', transform: 'translateX(-50%)' }} />
+              <div style={{ position: 'absolute', left: '50%', bottom: 6, width: 22, height: 6, borderRadius: '4px 4px 0 0', background: '#16d6c8', transform: 'translateX(-50%)' }} />
+              <div style={{ position: 'absolute', bottom: 14, left: '50%', width: 12, height: 9, borderRadius: '50%', background: '#14171C', transform: 'translateX(-50%)', boxShadow: '0 2px 0 rgba(255,255,255,.1)' }} />
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                <span style={{ fontFamily: "'Saira Condensed',sans-serif", fontWeight: 800, fontSize: 26, color: '#fff', letterSpacing: '.03em', lineHeight: 1 }}>AIR HOCKEY</span>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1, color: '#E23B4E', background: '#FDE7EA', padding: '4px 9px', borderRadius: 999 }}>PLAY</span>
+              </div>
+              <div style={{ fontFamily: "'Barlow Semi Condensed',sans-serif", fontWeight: 500, fontSize: 14, color: '#7c99bb', letterSpacing: '.04em' }}>1 Player vs AI · 2 Players on one iPad · First to 7 wins</div>
+            </div>
+            <div style={{ display: 'flex', gap: 6, flexShrink: 0 }}>
+              <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'linear-gradient(160deg,#16d6c8,#0a8f87)' }} />
+              <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'linear-gradient(160deg,#ff6b7e,#d6253b)' }} />
+            </div>
+          </button>
         </div>
       </div>
     </div>
