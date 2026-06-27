@@ -114,6 +114,7 @@ export function SpellScreen({ settings, onCelebrate }: Props) {
             onPointerDown={(e) => startDrag(item.id, e)}
             onPointerMove={moveDrag}
             onPointerUp={endDrag}
+            onPointerCancel={endDrag}
             style={{
               width: 92, height: 66, background: placed.has(item.id) ? 'rgba(20,23,28,.2)' : '#14171C',
               borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',

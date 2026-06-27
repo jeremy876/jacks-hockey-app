@@ -57,14 +57,20 @@ export function DrawScreen({ settings }: Props) {
   useEffect(() => {
     const c = canvasRef.current, w = wrapRef.current
     if (!c || !w) return
-    const ratio = window.devicePixelRatio || 1
-    dprRef.current = ratio
-    const lw = w.clientWidth, lh = w.clientHeight
-    c.width  = Math.round(lw * ratio)
-    c.height = Math.round(lh * ratio)
-    c.style.width  = lw + 'px'
-    c.style.height = lh + 'px'
-    c.getContext('2d')!.scale(ratio, ratio)
+    function resize() {
+      if (!c || !w) return
+      const ratio = window.devicePixelRatio || 1
+      dprRef.current = ratio
+      const lw = w.clientWidth, lh = w.clientHeight
+      c.width  = Math.round(lw * ratio)
+      c.height = Math.round(lh * ratio)
+      c.style.width  = lw + 'px'
+      c.style.height = lh + 'px'
+      c.getContext('2d')!.scale(ratio, ratio)
+    }
+    resize()
+    window.addEventListener('resize', resize)
+    return () => window.removeEventListener('resize', resize)
   }, [])
 
   function cx() { return canvasRef.current?.getContext('2d') ?? null }

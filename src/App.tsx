@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef } from 'react'
 import { Screen } from './types'
 import { useSettings } from './hooks/useSettings'
 import { useAudio } from './hooks/useAudio'
@@ -23,7 +23,7 @@ export default function App() {
   const [screen, setScreen] = useState<Screen>('home')
   const [stars, setStars] = useState(0)
   const [celebration, setCelebration] = useState<{ visible: boolean; text: string }>({ visible: false, text: '' })
-  const celebTimer = useState<ReturnType<typeof setTimeout> | null>(null)
+  const celebTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const { playPop, playCheer } = useAudio(settings.soundOn)
 
   const navigate = useCallback((s: Screen) => {
@@ -35,14 +35,14 @@ export default function App() {
     playCheer()
     setStars(s => s + 1)
     setCelebration({ visible: true, text })
-    if (celebTimer[0]) clearTimeout(celebTimer[0])
-    celebTimer[0] = setTimeout(() => setCelebration({ visible: false, text: '' }), 2800)
-  }, [playCheer, celebTimer])
+    if (celebTimer.current) clearTimeout(celebTimer.current)
+    celebTimer.current = setTimeout(() => setCelebration({ visible: false, text: '' }), 2800)
+  }, [playCheer])
 
   const closeCelebration = useCallback(() => {
-    if (celebTimer[0]) clearTimeout(celebTimer[0])
+    if (celebTimer.current) clearTimeout(celebTimer.current)
     setCelebration({ visible: false, text: '' })
-  }, [celebTimer])
+  }, [])
 
   return (
     <div style={{

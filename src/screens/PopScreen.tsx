@@ -46,7 +46,7 @@ export function PopScreen({ settings, onCelebrate }: Props) {
   useEffect(() => {
     setBubbles(Array.from({ length: 7 }, () => makeBubble(team, true)))
     setPopped(0)
-  }, [])
+  }, [team])
 
   function popBubble(id: number) {
     playPuck()
