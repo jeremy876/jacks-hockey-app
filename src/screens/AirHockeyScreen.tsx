@@ -507,7 +507,7 @@ export function AirHockeyScreen({ soundOn, onGoHome }: Props) {
   const ghostBtn: React.CSSProperties = { cursor:'pointer', border:'1px solid rgba(255,255,255,.14)', padding:'11px 26px', borderRadius:10, background:'rgba(20,28,40,.5)', fontFamily:"'Barlow Semi Condensed',sans-serif", fontWeight:600, fontSize:15, color:'#7c899a' }
 
   return (
-    <div style={{ position:'fixed', inset:0, zIndex:50, background:'#05070c', fontFamily:"'Barlow Semi Condensed',sans-serif", userSelect:'none', WebkitUserSelect:'none', overflow:'hidden' }}>
+    <div style={{ position:'absolute', inset:0, zIndex:50, background:'#05070c', fontFamily:"'Barlow Semi Condensed',sans-serif", userSelect:'none', WebkitUserSelect:'none', overflow:'hidden' }}>
 
       {/* GAME CANVAS */}
       <canvas

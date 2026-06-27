@@ -64,22 +64,19 @@ export default function App() {
       />
 
       <div style={{ position: 'relative', zIndex: 3, flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-        {screen === 'home'   && <HomeScreen settings={settings} stars={stars} onNavigate={navigate} />}
-        {screen === 'shoot'  && <ShootScreen settings={settings} onCelebrate={celebrate} />}
-        {screen === 'count'  && <CountScreen settings={settings} onCelebrate={celebrate} />}
-        {screen === 'trace'  && <TraceScreen settings={settings} onCelebrate={celebrate} />}
-        {screen === 'spell'  && <SpellScreen settings={settings} onCelebrate={celebrate} />}
-        {screen === 'match'  && <MatchScreen settings={settings} onCelebrate={celebrate} />}
-        {screen === 'sounds' && <WordsScreen settings={settings} />}
-        {screen === 'song'   && <SongScreen settings={settings} onCelebrate={celebrate} />}
-        {screen === 'draw'   && <DrawScreen settings={settings} />}
-        {screen === 'pop'    && <PopScreen settings={settings} onCelebrate={celebrate} />}
-        {screen === 'grown'  && <GrownUpsScreen settings={settings} onUpdate={updateSettings} />}
+        {screen === 'home'      && <HomeScreen settings={settings} stars={stars} onNavigate={navigate} />}
+        {screen === 'shoot'     && <ShootScreen settings={settings} onCelebrate={celebrate} />}
+        {screen === 'count'     && <CountScreen settings={settings} onCelebrate={celebrate} />}
+        {screen === 'trace'     && <TraceScreen settings={settings} onCelebrate={celebrate} />}
+        {screen === 'spell'     && <SpellScreen settings={settings} onCelebrate={celebrate} />}
+        {screen === 'match'     && <MatchScreen settings={settings} onCelebrate={celebrate} />}
+        {screen === 'sounds'    && <WordsScreen settings={settings} />}
+        {screen === 'song'      && <SongScreen settings={settings} onCelebrate={celebrate} />}
+        {screen === 'draw'      && <DrawScreen settings={settings} />}
+        {screen === 'pop'       && <PopScreen settings={settings} onCelebrate={celebrate} />}
+        {screen === 'grown'     && <GrownUpsScreen settings={settings} onUpdate={updateSettings} />}
+        {screen === 'airhockey' && <AirHockeyScreen soundOn={settings.soundOn} onGoHome={() => navigate('home')} />}
       </div>
-
-      {screen === 'airhockey' && (
-        <AirHockeyScreen soundOn={settings.soundOn} onGoHome={() => navigate('home')} />
-      )}
 
       <CelebrationOverlay
         visible={celebration.visible}
